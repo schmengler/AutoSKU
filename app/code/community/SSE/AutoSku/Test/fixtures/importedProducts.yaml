@@ -1,0 +1,18 @@
+eav:
+  catalog_product:
+    - entity_id: 1
+      sku: "S100"
+    - entity_id: 2
+      sku: "S101"
+    - entity_id: 3
+      sku: "-"
+    - entity_id: 4
+      sku: "-"
+    - entity_id: 5
+      sku: "-"
+    - entity_id: 6
+      sku: "-"
+    - entity_id: 7
+      sku: ""
+    - entity_id: 8
+      sku: "-"

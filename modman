@@ -1,2 +1,3 @@
 app/code/community/SSE/AutoSku app/code/community/SSE/AutoSku
 app/etc/modules/SSE_AutoSku.xml app/etc/modules/SSE_AutoSku.xml
+@shell cp $MODULE/shell/autosku.php $PROJECT/shell/autosku.php

@@ -14,7 +14,8 @@
  *
  * @package SSE_AutoSku
  */
-class SSE_AutoSku_Test_Config_Increment extends EcomDev_PHPUnit_Test_Case {
+class SSE_AutoSku_Test_Config_Increment extends EcomDev_PHPUnit_Test_Case
+{
 
 	/**
 	 * @var SSE_AutoSku_Model_Resource_Setup

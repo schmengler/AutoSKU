@@ -32,17 +32,18 @@ class SSE_AutoSku_Model_Entity_Attribute_Backend_Increment extends
      * @param Varien_Object $object
      * @return SSE_AutoSku_Model_Entity_Attribute_Backend_Increment
      */
-    public function beforeSave($object) {
-    	if ($object->getId()) {
-    		return $this;
-    	}
+    public function beforeSave($object)
+    {
         $code = $this->getAttribute()->getName();
         if ($object->getData($code) == Mage::getStoreConfig(self::XML_EMPTY_ALIAS)) {
         	$object->setData($code, null);
         }
+        if ($object->getId() && $object->getData($code)) {
+    		return $this;
+    	}
         $object->setIncrementId($object->getData($code));
         while (!$object->getIncrementId()) {
-        	parent::beforeSave($object);
+        	$this->getAttribute()->getEntity()->setNewIncrementId($object);
         	$this->checkDuplicateValue($object);
 
         }
