@@ -28,10 +28,48 @@ class SSE_AutoSku_Model_Entity_Attribute_Backend_Increment extends
      * @return SSE_AutoSku_Model_Entity_Attribute_Backend_Increment
      */
     public function beforeSave($object) {
+    	if ($object->getId()) {
+    		return $this;
+    	}
         $code = $this->getAttribute()->getName();
         $object->setIncrementId($object->getData($code));
-        parent::beforeSave($object);
+        while (!$object->getIncrementId()) {
+        	parent::beforeSave($object);
+        	$this->checkDuplicateValue($object);
+
+        }
         $object->setData($code, $object->getIncrementId());
+        return $this;
+    }
+
+    /**
+     * Check if increment id already exists, unset it if this is the case
+     *
+     * @param Varien_Object $object
+     * @return SSE_AutoSku_Model_Entity_Attribute_Backend_Increment
+     */
+    protected function checkDuplicateValue($object)
+    {
+    	/* @var $resource Mage_Eav_Model_Entity_Abstract */
+    	$resource = $object->getResource();
+        $code = $this->getAttribute()->getName();
+
+    	/* @var $adapter Varien_Db_Adapter_Interface */
+    	$adapter = $object->getResource()->getWriteConnection();
+    	$bind    = array($code => $object->getIncrementId());
+
+    	/*
+    	 * increment id should be a static attribute (field in entity table), so we access it directly
+    	 */
+    	$select = $adapter->select()
+	    	->from($resource->getEntityTable(), array($resource->getEntityIdField()))
+	    	->where("$code = :$code");
+
+    	$result = $adapter->fetchOne($select, $bind);
+    	if ($result) {
+    		$object->setIncrementId(null);
+    	}
+    	return $this;
     }
 
     // Schmengler Software Engineering Tag NEW_METHOD

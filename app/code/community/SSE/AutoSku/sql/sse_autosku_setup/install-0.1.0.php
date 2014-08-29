@@ -27,6 +27,7 @@ $installer->resetProductEntityStoreConfig();
  */
 $installer->updateAttribute(Mage_Catalog_Model_Product::ENTITY, 'sku', array(
     'backend_model' => 'sse_autosku/entity_attribute_backend_increment',
-    'is_required'   => '0'));
+    'is_required'   => '0',
+	'is_unique'     => '1'));
 
 $installer->endSetup();

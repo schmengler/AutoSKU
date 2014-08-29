@@ -25,7 +25,7 @@ class SSE_AutoSku_Model_Resource_Setup extends Mage_Catalog_Model_Resource_Setup
      *
      * @return
      */
-    public function resetProductEntityStoreConfig()
+    public function resetProductEntityStoreConfig($lastId = 'S99')
     {
         $productEntityType = Mage::getModel('eav/entity_type')
             ->loadByCode(Mage_Catalog_Model_Product::ENTITY);
@@ -34,7 +34,7 @@ class SSE_AutoSku_Model_Resource_Setup extends Mage_Catalog_Model_Resource_Setup
         $entityStoreConfig->setEntityTypeId($productEntityType->getId())
             ->setStoreId(0)
             ->setIncrementPrefix('S')
-            ->setIncrementLastId('S99')
+            ->setIncrementLastId($lastId)
             ->save();
 
     }

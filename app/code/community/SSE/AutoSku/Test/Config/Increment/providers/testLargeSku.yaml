@@ -1,0 +1,5 @@
+-
+  - name: Test Product
+    description: Description is required
+    price: 1.00
+    attribute_set_id: 4 # Default

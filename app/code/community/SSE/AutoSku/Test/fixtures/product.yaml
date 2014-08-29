@@ -1,0 +1,4 @@
+eav:
+  catalog_product:
+    - entity_id: 1
+      sku: S100
