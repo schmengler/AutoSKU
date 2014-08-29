@@ -34,6 +34,13 @@
             </sse_autosku>
         </models>
     </global>
+    <default>
+        <catalog>
+            <autosku>
+                <empty_alias>-</empty_alias>
+            </autosku>
+        </catalog>
+    </default>
     <phpunit>
         <suite>
             <modules>

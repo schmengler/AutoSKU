@@ -1,5 +1,14 @@
--
-  - name: Test Product
-    description: Description is required
-    price: 1.00
+first_sku:
+  - name: Test Product 1
+    attribute_set_id: 4 # Default
+second_sku:
+  - name: Test Product 2
+    attribute_set_id: 4 # Default
+empty_alias:
+  - name: Test Product 3
+    sku: "-"
+    attribute_set_id: 4 # Default
+custom_sku:
+  - name: Test Product 4
+    sku: custom
     attribute_set_id: 4 # Default

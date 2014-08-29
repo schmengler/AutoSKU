@@ -1,0 +1,8 @@
+Test_Product_1:
+  sku: S100
+Test_Product_2:
+  sku: S101
+Test_Product_3:
+  sku: S102
+Test_Product_4:
+  sku: custom

@@ -16,13 +16,18 @@
 class SSE_AutoSku_Model_Entity_Attribute_Backend_Increment extends
         Mage_Eav_Model_Entity_Attribute_Backend_Increment {
 
+	const XML_EMPTY_ALIAS = 'catalog/autosku/empty_alias';
+
     // Schmengler Software Engineering Tag NEW_CONST
 
     // Schmengler Software Engineering Tag NEW_VAR
 
     /**
      * Set new increment id to the attribute itself. The original class always uses the increment_id
-     * attribute, regardless of which attribute has the increment backend modle.
+     * attribute, regardless of which attribute has the increment backend model.
+     *
+     * Additionally, it will check for duplicates and treat the configured "empty alias" like an empty value,
+     * i.e. generate an increment id in this case.
      *
      * @param Varien_Object $object
      * @return SSE_AutoSku_Model_Entity_Attribute_Backend_Increment
@@ -32,6 +37,9 @@ class SSE_AutoSku_Model_Entity_Attribute_Backend_Increment extends
     		return $this;
     	}
         $code = $this->getAttribute()->getName();
+        if ($object->getData($code) == Mage::getStoreConfig(self::XML_EMPTY_ALIAS)) {
+        	$object->setData($code, null);
+        }
         $object->setIncrementId($object->getData($code));
         while (!$object->getIncrementId()) {
         	parent::beforeSave($object);

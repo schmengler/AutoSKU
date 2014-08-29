@@ -20,6 +20,7 @@ class SSE_AutoSku_Test_Config_Increment extends EcomDev_PHPUnit_Test_Case {
 	 * @var SSE_AutoSku_Model_Resource_Setup
 	 */
 	protected static $setup;
+
     /**
      * Always start with the first increment id as set up by install script
      */
@@ -42,25 +43,13 @@ class SSE_AutoSku_Test_Config_Increment extends EcomDev_PHPUnit_Test_Case {
     /**
      * @test
      * @dataProvider dataProvider
+     * @loadExpectation
      */
     public function testAddProducts($productData)
     {
-        /* @var $newProduct Mage_Catalog_Model_Product */
-        $newProduct = Mage::getModel('catalog/product');
-        $newProduct->setData($productData);
-        $newProduct->save();
-        $this->assertGreaterThan(0, $newProduct->getId(),
-             'product should be saved');
-        $this->assertEquals('S100', $newProduct->getSku(),
-             'SKU of first product');
-
-        $newProduct = Mage::getModel('catalog/product');
-        $newProduct->setData($productData);
-        $newProduct->save();
-        $this->assertGreaterThan(0, $newProduct->getId(),
-             'product should be saved');
-        $this->assertEquals('S101', $newProduct->getSku(),
-             'SKU of second product');
+    	$expectedSku = $this->expected(str_replace(' ', '_', $productData['name']))->getSku();
+    	$newProduct = $this->_saveProduct($productData);
+    	$this->assertEquals($expectedSku, $newProduct->getSku(), 'SKU');
     }
     /**
      * @test
@@ -69,13 +58,8 @@ class SSE_AutoSku_Test_Config_Increment extends EcomDev_PHPUnit_Test_Case {
     public function testLargeSku($productData)
     {
     	self::$setup->resetProductEntityStoreConfig('S999');
-        /* @var $newProduct Mage_Catalog_Model_Product */
-        $newProduct = Mage::getModel('catalog/product');
-        $newProduct->setData($productData);
-        $newProduct->save();
-        $this->assertGreaterThan(0, $newProduct->getId(),
-             'product should be saved');
-        $this->assertEquals('S1000', $newProduct->getSku(),
+    	$newProduct = $this->_saveProduct($productData);
+    	$this->assertEquals('S1000', $newProduct->getSku(),
              'SKU of new product');
     }
     /**
@@ -112,17 +96,24 @@ class SSE_AutoSku_Test_Config_Increment extends EcomDev_PHPUnit_Test_Case {
     		$existingProduct->delete();
     	}
 
-        /* @var $newProduct Mage_Catalog_Model_Product */
-        $newProduct = Mage::getModel('catalog/product');
-        $newProduct->setData($productData);
-        $newProduct->save();
-        $this->assertGreaterThan(0, $newProduct->getId(),
-             'product should be saved');
+    	$newProduct = $this->_saveProduct($productData);
         $this->assertEquals('S101', $newProduct->getSku(),
              'SKU of new product should skip over existing SKU');
     }
-    public function testImportValidation()
+
+    /**
+     * Save and return new product with given data
+     *
+     * @param mixed[] $productData
+     * @return Mage_Catalog_Model_Product
+     */
+    protected function _saveProduct(array $productData)
     {
-    	$this->markTestIncomplete();
+    	/* @var $newProduct Mage_Catalog_Model_Product */
+    	$newProduct = Mage::getModel('catalog/product');
+    	$newProduct->setData($productData);
+    	$newProduct->save();
+    	$this->assertGreaterThan(0, $newProduct->getId(), 'product should be saved');
+    	return $newProduct;
     }
 }
