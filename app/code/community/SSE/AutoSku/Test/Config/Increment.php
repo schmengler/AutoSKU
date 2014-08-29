@@ -19,20 +19,20 @@ class SSE_AutoSku_Test_Config_Increment extends EcomDev_PHPUnit_Test_Case {
     /**
      * Always start with the first increment id as set up by install script
      */
-	public static function setUpBeforeClass()
-	{
-		Mage::getModel('sse_autosku/resource_setup', 'sse_autosku_setup')->resetProductEntityStoreConfig();
-	}
+    public static function setUpBeforeClass()
+    {
+        Mage::getModel('sse_autosku/resource_setup', 'sse_autosku_setup')->resetProductEntityStoreConfig();
+    }
 
-	/**
+    /**
      * @test
      */
     public function testSkuNotRequired()
     {
-    	/* @var $skuAttribute Mage_Catalog_Model_Entity_Attribute */
+        /* @var $skuAttribute Mage_Catalog_Model_Entity_Attribute */
         $skuAttribute = Mage::getModel('catalog/entity_attribute');
         $skuAttribute->loadByCode(Mage_Catalog_Model_Product::ENTITY, 'sku');
-        $this->assertFalse($skuAttribute->getIsRequired());
+        $this->assertEquals(0, $skuAttribute->getIsRequired(), 'SKU should not be a required attribute');
     }
     /**
      * @test

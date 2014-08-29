@@ -11,34 +11,34 @@
  */
 -->
 <config>
-	<modules>
-		<SSE_AutoSku>
-			<version>0.1.0</version>
-		</SSE_AutoSku>
-	</modules>
-	<global>
-		<resources>
-			<sse_autosku_setup>
-				<setup>
-					<module>SSE_AutoSku</module>
-					<class>SSE_AutoSku_Model_Resource_Setup</class>
-				</setup>
-				<connection>
-					<use>core_setup</use>
-				</connection>
-			</sse_autosku_setup>
-		</resources>
-		<models>
-			<sse_autosku>
-				<class>SSE_AutoSku_Model</class>
-			</sse_autosku>
-		</models>
-	</global>
-	<phpunit>
-		<suite>
-			<modules>
-				<SSE_AutoSku />
-			</modules>
-		</suite>
-	</phpunit>
+    <modules>
+        <SSE_AutoSku>
+            <version>0.1.0</version>
+        </SSE_AutoSku>
+    </modules>
+    <global>
+        <resources>
+            <sse_autosku_setup>
+                <setup>
+                    <module>SSE_AutoSku</module>
+                    <class>SSE_AutoSku_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </sse_autosku_setup>
+        </resources>
+        <models>
+            <sse_autosku>
+                <class>SSE_AutoSku_Model</class>
+            </sse_autosku>
+        </models>
+    </global>
+    <phpunit>
+        <suite>
+            <modules>
+                <SSE_AutoSku />
+            </modules>
+        </suite>
+    </phpunit>
 </config>
