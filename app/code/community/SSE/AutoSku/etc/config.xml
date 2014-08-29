@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+/**
+ * This file is part of SSE_AutoSku for Magento.
+ *
+ * @license osl-3.0
+ * @author Fabian Schmengler <fabian@schmengler-se.de> <@fschmengler>
+ * @category SSE
+ * @package SSE_AutoSku
+ * @copyright Copyright (c) 2014 Schmengler Software Engineering (http://www.schmengler-se.de/)
+ */
+-->
+<config>
+    <modules>
+        <SSE_AutoSku>
+            <version>0.1.0</version>
+        </SSE_AutoSku>
+    </modules>
+</config>

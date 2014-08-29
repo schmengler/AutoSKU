@@ -1,0 +1,16 @@
+{
+    "name": "sse/autosku",
+    "license": "osl-3.0",
+    "type": "magento-module",
+    "description": "Automatically generate SKUs for new products similar to order numbers",
+    "homepage": "http://www.schmengler-se.de/",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors":[
+        {
+            "name":"Fabian Schmengler",
+            "email":"fabian@schmengler-se.de"
+        }
+    ]
+}
