@@ -15,17 +15,31 @@
  * @package SSE_AutoSku
  */
 class SSE_AutoSku_Test_Config_Increment extends EcomDev_PHPUnit_Test_Case {
+
     /**
+     * Always start with the first increment id as set up by install script
+     */
+	public static function setUpBeforeClass()
+	{
+		Mage::getModel('sse_autosku/resource_setup', 'sse_autosku_setup')->resetProductEntityStoreConfig();
+	}
+
+	/**
      * @test
      */
-    public function testSkuNotRequired() {
-        $this->markTestIncomplete();
+    public function testSkuNotRequired()
+    {
+    	/* @var $skuAttribute Mage_Catalog_Model_Entity_Attribute */
+        $skuAttribute = Mage::getModel('catalog/entity_attribute');
+        $skuAttribute->loadByCode(Mage_Catalog_Model_Product::ENTITY, 'sku');
+        $this->assertFalse($skuAttribute->getIsRequired());
     }
     /**
      * @test
      * @dataProvider dataProvider
      */
-    public function testAddProducts($productData) {
+    public function testAddProducts($productData)
+    {
         /* @var $newProduct Mage_Catalog_Model_Product */
         $newProduct = Mage::getModel('catalog/product');
         $newProduct->setData($productData);
@@ -51,13 +65,15 @@ class SSE_AutoSku_Test_Config_Increment extends EcomDev_PHPUnit_Test_Case {
      * @test
      * @loadFixture products.yaml
      */
-    public function testLargeSku() {
+    public function testLargeSku()
+    {
         $this->markTestIncomplete();
     }
     /**
      * @test
      */
-    public function testAddProductsSimultaneously() {
+    public function testAddProductsSimultaneously()
+    {
         $this->markTestIncomplete();
     }
 }

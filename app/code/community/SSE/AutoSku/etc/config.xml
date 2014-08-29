@@ -21,7 +21,7 @@
 			<sse_autosku_setup>
 				<setup>
 					<module>SSE_AutoSku</module>
-					<class>Mage_Catalog_Model_Resource_Setup</class>
+					<class>SSE_AutoSku_Model_Resource_Setup</class>
 				</setup>
 				<connection>
 					<use>core_setup</use>
