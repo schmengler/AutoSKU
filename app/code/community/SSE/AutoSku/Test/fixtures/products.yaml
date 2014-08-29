@@ -1,0 +1,8 @@
+eav:
+  catalog_product:
+    - entity_id: 1
+      sku: S100
+    - entity_id: 2
+      sku: S999
+    - entity_id: 3
+      sku: S998

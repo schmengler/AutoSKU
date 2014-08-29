@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 /**
  * This file is part of SSE_AutoSku for Magento.
@@ -11,9 +11,34 @@
  */
 -->
 <config>
-    <modules>
-        <SSE_AutoSku>
-            <version>0.1.0</version>
-        </SSE_AutoSku>
-    </modules>
-</config>
+	<modules>
+		<SSE_AutoSku>
+			<version>0.1.0</version>
+		</SSE_AutoSku>
+	</modules>
+	<global>
+		<resources>
+			<sse_autosku_setup>
+				<setup>
+					<module>SSE_AutoSku</module>
+					<class>Mage_Catalog_Model_Resource_Setup</class>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</sse_autosku_setup>
+		</resources>
+		<models>
+			<sse_autosku>
+				<class>SSE_AutoSku_Model</class>
+			</sse_autosku>
+		</models>
+	</global>
+	<phpunit>
+		<suite>
+			<modules>
+				<SSE_AutoSku />
+			</modules>
+		</suite>
+	</phpunit>
+</config>
