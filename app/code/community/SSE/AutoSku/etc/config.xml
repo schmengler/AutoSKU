@@ -13,7 +13,7 @@
 <config>
     <modules>
         <SSE_AutoSku>
-            <version>0.1.0</version>
+            <version>1.0.1</version>
         </SSE_AutoSku>
     </modules>
     <global>
@@ -48,4 +48,13 @@
             </modules>
         </suite>
     </phpunit>
+    <default>
+        <general>
+            <validator_data>
+                <input_types>
+                    <label>label</label>
+                </input_types>
+            </validator_data>
+        </general>
+    </default>
 </config>

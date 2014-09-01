@@ -1,3 +1,8 @@
+# Name: SSE_AutoSku
+# Version: 1.0.0
+# Description: Automatically generate SKUs for new products similar to order numbers
+# Summary: Automatically generate SKUs for new products similar to order numbers
+
 app/code/community/SSE/AutoSku app/code/community/SSE/AutoSku
 app/etc/modules/SSE_AutoSku.xml app/etc/modules/SSE_AutoSku.xml
 @shell cp $MODULE/shell/autosku.php $PROJECT/shell/autosku.php
