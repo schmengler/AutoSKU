@@ -37,7 +37,7 @@
     <default>
         <catalog>
             <autosku>
-                <empty_alias>-</empty_alias>
+                <empty_alias>tmp%</empty_alias>
             </autosku>
         </catalog>
     </default>

@@ -5,14 +5,14 @@ eav:
     - entity_id: 2
       sku: "S101"
     - entity_id: 3
-      sku: "-"
+      sku: "tmp1"
     - entity_id: 4
-      sku: "-"
+      sku: "tmp2"
     - entity_id: 5
-      sku: "-"
+      sku: ""
     - entity_id: 6
-      sku: "-"
+      sku: "tmp3"
     - entity_id: 7
       sku: ""
     - entity_id: 8
-      sku: "-"
+      sku: ""

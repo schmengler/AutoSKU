@@ -17,7 +17,7 @@ class SSE_AutoSku_Model_Entity_Attribute_Backend_Increment extends
         Mage_Eav_Model_Entity_Attribute_Backend_Increment {
 
 	const XML_EMPTY_ALIAS = 'catalog/autosku/empty_alias';
-
+	
     // Schmengler Software Engineering Tag NEW_CONST
 
     // Schmengler Software Engineering Tag NEW_VAR
@@ -35,7 +35,7 @@ class SSE_AutoSku_Model_Entity_Attribute_Backend_Increment extends
     public function beforeSave($object)
     {
         $code = $this->getAttribute()->getName();
-        if ($object->getData($code) == Mage::getStoreConfig(self::XML_EMPTY_ALIAS)) {
+        if (preg_match('/' . str_replace('%', '.*', preg_quote(Mage::getStoreConfig(self::XML_EMPTY_ALIAS), '/')) . '/', $object->getData($code))) {
         	$object->setData($code, null);
         }
         if ($object->getId() && $object->getData($code)) {
