@@ -62,13 +62,13 @@ class SSE_AutoSku_Model_Entity_Attribute_Backend_Increment extends
 
         /* @var $adapter Varien_Db_Adapter_Interface */
         $adapter = $object->getResource()->getWriteConnection();
-        $bind    = array($code => $object->getIncrementId());
+        $bind    = [$code => $object->getIncrementId()];
 
         /*
          * increment id should be a static attribute (field in entity table), so we access it directly
          */
         $select = $adapter->select()
-            ->from($resource->getEntityTable(), array($resource->getEntityIdField()))
+            ->from($resource->getEntityTable(), [$resource->getEntityIdField()])
             ->where("$code = :$code");
 
         $result = $adapter->fetchOne($select, $bind);

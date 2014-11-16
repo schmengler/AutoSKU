@@ -16,18 +16,18 @@ $installer->startSetup();
 /*
  * Set increment model for product entity
  */
-$installer->updateEntityType(Mage_Catalog_Model_Product::ENTITY, array(
+$installer->updateEntityType(Mage_Catalog_Model_Product::ENTITY, [
     'increment_model'      => 'eav/entity_increment_numeric',
     'increment_pad_length' => 3,
-    'increment_per_store'  => false));
+    'increment_per_store'  => false]);
 $installer->resetProductEntityStoreConfig();
 
 /*
  * Set increment backend model for sku attribute
  */
-$installer->updateAttribute(Mage_Catalog_Model_Product::ENTITY, 'sku', array(
+$installer->updateAttribute(Mage_Catalog_Model_Product::ENTITY, 'sku', [
     'backend_model' => 'sse_autosku/entity_attribute_backend_increment',
     'is_required'   => '0',
-    'is_unique'     => '1'));
+    'is_unique'     => '1']);
 
 $installer->endSetup();

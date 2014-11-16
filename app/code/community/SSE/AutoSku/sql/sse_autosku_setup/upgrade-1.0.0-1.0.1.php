@@ -16,8 +16,6 @@ $installer->startSetup();
 /*
  * Set backend input type for sku attribute to be read-only
  */
-$installer->updateAttribute(Mage_Catalog_Model_Product::ENTITY, 'sku', array(
-    'frontend_input' => 'label',
-));
+$installer->updateAttribute(Mage_Catalog_Model_Product::ENTITY, 'sku', ['frontend_input' => 'label']);
 
 $installer->endSetup();
