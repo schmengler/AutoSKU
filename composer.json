@@ -5,7 +5,8 @@
     "description": "Automatically generate SKUs for new products similar to order numbers",
     "homepage": "http://www.schmengler-se.de/",
     "require": {
-        "magento-hackathon/magento-composer-installer": "*"
+        "magento-hackathon/magento-composer-installer": "*",
+        "php": ">=5.4"
     },
     "authors":[
         {

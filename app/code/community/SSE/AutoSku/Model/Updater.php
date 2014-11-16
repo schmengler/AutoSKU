@@ -23,20 +23,34 @@ class SSE_AutoSku_Model_Updater extends Mage_Core_Model_Abstract
      */
     public function updateAll()
     {
+        /* @var $iterator Mage_Core_Model_Resource_Iterator */
+        $iterator = Mage::getResourceModel('core/iterator');
+        /* @var $productModel Mage_Catalog_Model_Product */
+        $productModel = Mage::getModel('catalog/product');
+        $productModel->getResource()->isPartialSave(true);
+        
+        $productsToUpdate = $this->getProductsWithEmptySkuCollection();
+        $iterator->walk($productsToUpdate->getSelect(), [function($iteratorArgs) use ($productModel) {
+            $productModel->setData($iteratorArgs['row']);
+            $productModel->getResource()->save($productModel);
+        }]);
+    }
+
+    /**
+     * Prepares product collection
+     * 
+     * @return Mage_Catalog_Model_Resource_Product_Collection
+     */
+    public function getProductsWithEmptySkuCollection ()
+    {
         $empty = array(null, '');
         $emptyAlias = Mage::getStoreConfig(SSE_AutoSku_Model_Entity_Attribute_Backend_Increment::XML_EMPTY_ALIAS);
 
         /* @var $productsWithEmptySku Mage_Catalog_Model_Resource_Product_Collection */
         $productsWithEmptySku = Mage::getModel('catalog/product')->getCollection();
         $productsWithEmptySku->addAttributeToSelect('entity_id', 'sku')
-            ->addAttributeToFilter('sku', array(array('in' => $empty), array('like' => $emptyAlias)))
+            ->addAttributeToFilter('sku', array(['in' => $empty], ['like' => $emptyAlias]))
             ->addOrder('entity_id', Varien_Data_Collection_Db::SORT_ORDER_ASC);
-        foreach ($productsWithEmptySku as $product) {
-            /* @var $product Mage_Catalog_Model_Product */
-            $product->unsetData('sku');
-            $product->getResource()->isPartialSave(true);
-            $product->getResource()->save($product);
-        }
+        return $productsWithEmptySku;
     }
-
 }
