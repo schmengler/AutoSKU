@@ -16,32 +16,27 @@
 class SSE_AutoSku_Model_Updater extends Mage_Core_Model_Abstract
 {
 
-// Schmengler Software Engineering Tag NEW_CONST
-
-// Schmengler Software Engineering Tag NEW_VAR
-
     /**
-     * short_description_here
+     * Update SKU for all products with empty or temporary SKUs
+     * 
      * @return
      */
     public function updateAll()
     {
-    	$empty = array(null, '');
-    	$emptyAlias = Mage::getStoreConfig(SSE_AutoSku_Model_Entity_Attribute_Backend_Increment::XML_EMPTY_ALIAS);
+        $empty = array(null, '');
+        $emptyAlias = Mage::getStoreConfig(SSE_AutoSku_Model_Entity_Attribute_Backend_Increment::XML_EMPTY_ALIAS);
 
-    	/* @var $productsWithEmptySku Mage_Catalog_Model_Resource_Product_Collection */
+        /* @var $productsWithEmptySku Mage_Catalog_Model_Resource_Product_Collection */
         $productsWithEmptySku = Mage::getModel('catalog/product')->getCollection();
         $productsWithEmptySku->addAttributeToSelect('entity_id', 'sku')
             ->addAttributeToFilter('sku', array(array('in' => $empty), array('like' => $emptyAlias)))
             ->addOrder('entity_id', Varien_Data_Collection_Db::SORT_ORDER_ASC);
         foreach ($productsWithEmptySku as $product) {
-        	/* @var $product Mage_Catalog_Model_Product */
-        	$product->unsetData('sku');
-        	$product->getResource()->isPartialSave(true);
-        	$product->getResource()->save($product);
+            /* @var $product Mage_Catalog_Model_Product */
+            $product->unsetData('sku');
+            $product->getResource()->isPartialSave(true);
+            $product->getResource()->save($product);
         }
     }
-
-// Schmengler Software Engineering Tag NEW_METHOD
 
 }

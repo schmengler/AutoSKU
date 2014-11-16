@@ -16,10 +16,6 @@
 class SSE_AutoSku_Model_Resource_Setup extends Mage_Catalog_Model_Resource_Setup
 {
 
-// Schmengler Software Engineering Tag NEW_CONST
-
-// Schmengler Software Engineering Tag NEW_VAR
-
     /**
      * Reset store config for product entity to set up the first sku value and the sku prefix
      *
@@ -38,7 +34,5 @@ class SSE_AutoSku_Model_Resource_Setup extends Mage_Catalog_Model_Resource_Setup
             ->save();
 
     }
-
-// Schmengler Software Engineering Tag NEW_METHOD
 
 }
