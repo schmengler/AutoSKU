@@ -57,4 +57,15 @@
             </validator_data>
         </general>
     </default>
-</config>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <sse_autosku before="Mage_Adminhtml">SSE_AutoSku_Adminhtml</sse_autosku>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>
