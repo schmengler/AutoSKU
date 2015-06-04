@@ -5,7 +5,7 @@ This Magento extension sets up automatically generated SKUs, similar to order nu
 
 Facts
 -----
-[![Build Status](https://travis-ci.org/schmengler/AutoSKU.svg)](https://travis-ci.org/schmengler/AutoSKU)
+[![Build Status](https://travis-ci.org/schmengler/AutoSKU.svg)](https://travis-ci.org/schmengler/AutoSKU) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/schmengler/AutoSKU/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/schmengler/AutoSKU/?branch=master)
 
 - version: 1.2.0
 - [extension on GitHub](https://github.com/schmengler/AutoSku)
