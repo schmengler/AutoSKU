@@ -1,0 +1,9 @@
+eav:
+  catalog_product:
+    - entity_id: 1
+      sku: S100
+      type_id: configurable
+      status: 1
+      attribute_set_id: 4
+      super_attributes:
+        - color

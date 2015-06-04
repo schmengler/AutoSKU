@@ -34,6 +34,19 @@
             </sse_autosku>
         </models>
     </global>
+    <adminhtml>
+        <events>
+            <controller_action_predispatch_adminhtml_catalog_product_quickCreate>
+                <observers>
+                    <sse_autosku>
+                        <type>singleton</type>
+                        <class>sse_autosku/observer</class>
+                        <method>setAutogenerateSku</method>
+                    </sse_autosku>
+                </observers>
+            </controller_action_predispatch_adminhtml_catalog_product_quickCreate>
+        </events>
+    </adminhtml>
     <default>
         <catalog>
             <autosku>
@@ -57,4 +70,4 @@
             </validator_data>
         </general>
     </default>
-</config>
+</config>
