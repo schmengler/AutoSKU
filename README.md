@@ -3,6 +3,13 @@ SSE_AutoSku
 
 This Magento extension sets up automatically generated SKUs, similar to order numbers.
 
+## Attention: It is not actively maintained anymore!
+
+- If you want to take over work on this project, contact me and I can give you ownership on Github
+- If you need this feature integrated and are willing to pay me for development on the extension and/or integration in your project, you can contact me as well
+
+Email: info@schmengler-se.de
+
 Facts
 -----
 [![Build Status](https://travis-ci.org/schmengler/AutoSKU.svg)](https://travis-ci.org/schmengler/AutoSKU) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/schmengler/AutoSKU/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/schmengler/AutoSKU/?branch=master)
