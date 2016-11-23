@@ -32,4 +32,16 @@ class SSE_AutoSku_Model_Observer
         $simpleProductRequest['sku_autogenerate'] = '1';
         $request->setParam('simple_product', $simpleProductRequest);
     }
+
+    /**
+     * Lock product attributes
+     *
+     * @event catalog_product_edit_action
+     * @param Varien_Event_Observer $observer $observer
+     */
+    public function lockAttributes(Varien_Event_Observer $observer) {
+        $event      = $observer->getEvent();
+        $product    = $event->getProduct();
+        $product->lockAttribute('sku');
+    }
 }

@@ -13,7 +13,7 @@
 <config>
     <modules>
         <SSE_AutoSku>
-            <version>1.2.0</version>
+            <version>1.2.1</version>
         </SSE_AutoSku>
     </modules>
     <global>
@@ -45,6 +45,15 @@
                     </sse_autosku>
                 </observers>
             </controller_action_predispatch_adminhtml_catalog_product_quickCreate>
+
+            <catalog_product_edit_action>
+                <observers>
+                    <lock_attributes>
+                        <class>sse_autosku/observer</class>
+                        <method>lockAttributes</method>
+                    </lock_attributes>
+                </observers>
+            </catalog_product_edit_action>
         </events>
     </adminhtml>
     <default>
